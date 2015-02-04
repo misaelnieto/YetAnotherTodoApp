@@ -7,3 +7,11 @@ application/cache/*
 application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
+
+assets/.sass-cache
+assets/Gemfile.lock
+assets/bower_components
+assets/npm-debug.log
+
+assets/stylesheets/*
+!assets/stylesheets/.gitkeep
