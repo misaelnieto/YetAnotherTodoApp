@@ -40,6 +40,13 @@
 //   "foundation/components/visibility";
 
 .login {
+    .title.row {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%;
+        max-width: 500px;
+        text-align: center;      
+    }
     .center.row {
         height: 300px;
         margin-left: auto;

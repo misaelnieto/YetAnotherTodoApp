@@ -9158,6 +9158,14 @@ th.hide-for-touch {
   }
 }
 /* line 43, ../scss/app.scss */
+.login .title.row {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  max-width: 500px;
+  text-align: center;
+}
+/* line 50, ../scss/app.scss */
 .login .center.row {
   height: 300px;
   margin-left: auto;
@@ -9165,45 +9173,45 @@ th.hide-for-touch {
   margin-top: 5%;
   max-width: 500px;
 }
-/* line 51, ../scss/app.scss */
+/* line 58, ../scss/app.scss */
 .login .tabs-content {
   border: 1px solid #EFEFEF;
   -webkit-box-shadow: 1px 1px 2px 1px #EFEFEF;
   box-shadow: 1px 1px 2px 1px #EFEFEF;
 }
-/* line 57, ../scss/app.scss */
+/* line 64, ../scss/app.scss */
 .login .signup-panel {
   padding: 15px;
 }
-/* line 61, ../scss/app.scss */
+/* line 68, ../scss/app.scss */
 .login .signup-panel i {
   font-size: 30px;
   line-height: 50px;
   color: #999;
 }
-/* line 67, ../scss/app.scss */
+/* line 74, ../scss/app.scss */
 .login .signup-panel form input, .login .signup-panel form span {
   height: 50px;
 }
-/* line 71, ../scss/app.scss */
+/* line 78, ../scss/app.scss */
 .login .signup-panel .welcome {
   font-size: 26px;
   text-align: center;
   margin-left: 0;
 }
-/* line 77, ../scss/app.scss */
+/* line 84, ../scss/app.scss */
 .login .signup-panel .button {
   margin-left: 35%;
 }
-/* line 81, ../scss/app.scss */
+/* line 88, ../scss/app.scss */
 .login section.active {
   padding-top: 75px !important;
 }
-/* line 85, ../scss/app.scss */
+/* line 92, ../scss/app.scss */
 .login p.title {
   border-bottom: 1px solid #cccccc !important;
 }
-/* line 89, ../scss/app.scss */
+/* line 96, ../scss/app.scss */
 .login .content {
   height: 450px;
 }
