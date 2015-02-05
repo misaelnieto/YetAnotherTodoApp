@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lista de pendiendtes</title>
+    <title>Lista de tareas</title>
     <link rel="stylesheet" href="assets/bower_components/foundation-icons/foundation_icons_general/stylesheets/general_foundicons.css" />
     <link rel="stylesheet" href="assets/stylesheets/app.css" />
     <script src="assets/bower_components/modernizr/modernizr.js"></script>
 </head>
 <body class="login">
-    <div class="title row">
-        <h1>Mi lista de pendientes</h1>
+    <div class="title row text-center">
+        <h1>Mi lista de tareas</h1>
     </div>
     <div class="center row">
         <ul class="tabs" data-tab>
