@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class TaskList extends CI_Model {
+class Task_List extends CI_Model {
 
     public function __construct()
     {
@@ -14,6 +14,7 @@ class TaskList extends CI_Model {
         $query = $this->db->get();
         $result = $query->result();
         foreach ($result as &$row)
+        {
             $row["tasks"] = $this->models->Task->all_from_list($row['id']);
         }
         return $result;

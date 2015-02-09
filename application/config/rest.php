@@ -58,7 +58,7 @@ $config['rest_message_field_name'] = 'error';
 |	Default: TRUE
 |
 */
-$config['enable_emulate_request'] = TRUE;
+$config['enable_emulate_request'] = false;
 
 
 /*

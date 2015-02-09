@@ -2,13 +2,19 @@
 
 require APPPATH.'/libraries/REST_Controller.php';
 
-class JsonApi extends REST_Controller
+class Api extends REST_Controller
 {
-    function lists_get()
+    public function test_get()
     {
-        $this->load->model('TaskList');
-        $lists = $this->models->TaskList->all();
-        $this->response($lists, 200);
+        $data = array('hola', 'mundo');
+        $this->response($data, 200);
+    }
+
+    public function lists_get()
+    {
+        $this->load->model('Task_List');
+        $data = array('status'=>'OK', 'data'=> $this->models->TaskList->all());
+        $this->response($data, 200);
     }
 
     public function list_put()
