@@ -26,13 +26,14 @@
                 <div class="row">
                     <div class="large-12 columns">
                         <div class="signup-panel">
-                            <form>
+                            <?php echo validation_errors(); ?>
+                            <?php echo form_open('login_check'); ?>
                                 <div class="row collapse">
                                     <div class="small-2  columns">
                                         <span class="prefix"><i class="foundicon-people"></i></span>
                                     </div>
                                     <div class="small-10  columns">
-                                        <input type="text" placeholder="Nombre completo">
+                                        <input type="text" name="name" placeholder="Nombre completo">
                                     </div>
                                 </div>
                                 <div class="row collapse">
@@ -40,7 +41,7 @@
                                         <span class="prefix"><i class="foundicon-mail"></i></span>
                                     </div>
                                     <div class="small-10  columns">
-                                        <input type="text" placeholder="Correo Electrónico">
+                                        <input type="name" name="email" placeholder="Correo Electrónico">
                                     </div>
                                 </div>
                                 <div class="row collapse">
@@ -48,7 +49,7 @@
                                         <span class="prefix"><i class="foundicon-lock"></i></span>
                                     </div>
                                     <div class="small-10 columns ">
-                                        <input type="text" placeholder="Contraseña">
+                                        <input type="password" placeholder="Contraseña">
                                     </div>
                                 </div>
                             </form>
@@ -62,13 +63,15 @@
                     <div class="large-12 columns">
                         <div class="signup-panel">
                             <p class="welcome">Hola de nuevo!</p>
+                            <?php echo validation_errors(); ?>
+                            <?php echo form_open('register'); ?>
                             <form>
                                 <div class="row collapse">
                                     <div class="small-2 columns">
                                         <span class="prefix"><i class="foundicon-mail"></i></span>
                                     </div>
                                     <div class="small-10  columns">
-                                        <input type="text" placeholder="Correo Electrónico">
+                                        <input type="text" name="email" placeholder="Correo Electrónico">
                                     </div>
                                 </div>
                                 <div class="row collapse">
@@ -76,7 +79,7 @@
                                         <span class="prefix"><i class="foundicon-lock"></i></span>
                                     </div>
                                     <div class="small-10 columns ">
-                                        <input type="text" placeholder="Contraseña">
+                                        <input type="password" placeholder="Contraseña">
                                     </div>
                                 </div>
                             </form>
