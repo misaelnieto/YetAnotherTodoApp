@@ -2,17 +2,23 @@
 
 class Task extends CI_Model {
 
+    var $id ='';
+    var $text ='';
+    var $completed ='';
+    var $parent_list ='';
+    var $created ='';
+    var $updated ='';
+
     public function __construct()
     {
+        // Call the Model constructor
+        parent::__construct();
         $this->load->database();
     }
 
     public function all_from_list($tasklist_id)
     {
-        $this->db->select('id, text');
-        $this->db->where('completed = 0');
-        $this->db->where('parent_list', $tasklist_id);
-        $query = $this->db->get();
+        $query = $this->db->query('SELECT id, text FROM tasks WHERE completed=0 AND parent_list='.$tasklist_id);
         return $query->result_array();
     }
 

@@ -13,20 +13,20 @@ class Api extends REST_Controller
     public function lists_get()
     {
         $this->load->model('Task_List');
-        $data = array('status'=>'OK', 'data'=> $this->models->TaskList->all());
+        $data = array('status'=>'OK', 'data'=> $this->Task_List->all());
         $this->response($data, 200);
     }
 
     public function list_put()
     {
-        $this->load->model('TaskList');
-        $this->models->TaskList->add($this->put('title'));
+        $this->load->model('Task_List');
+        $this->Task_List->add($this->put('title'));
     }
 
     public function list_post()
     {
-        $this->load->model('TaskList');
-        $this->models->TaskList->update($this->post('title'), $this->post('title'));
+        $this->load->model('Task_List');
+        $this->Task_List->update($this->post('title'), $this->post('title'));
     }
 
     public function task_put()

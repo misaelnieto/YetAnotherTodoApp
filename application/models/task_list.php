@@ -10,12 +10,11 @@ class Task_List extends CI_Model {
     public function all()
     {
         $this->load->model('Task');
-        $this->db->select('id, title');
-        $query = $this->db->get();
-        $result = $query->result();
+        $query = $this->db->query('SELECT id, title FROM task_lists');
+        $result = $query->result_array();
         foreach ($result as &$row)
         {
-            $row["tasks"] = $this->models->Task->all_from_list($row['id']);
+            $row["tasks"] = $this->Task->all_from_list($row['id']);
         }
         return $result;
     }
