@@ -1,3 +1,15 @@
+#This is how I should setup the database.
+
+sudo yum install mariadb
+.... And wait
+
+Then on mysql promt
+
+CREATE DATABASE YetAnotherTodoApp;
+GRANT ALL PRIVILEGES ON YetAnotherTodoApp.* TO 'my_usr'@'localhost' IDENTIFIED BY '12345678' WITH GRANT OPTION;
+
+Then create the tables.
+
 # Foundation Compass Template
 
 The easiest way to get started with Foundation + Compass.

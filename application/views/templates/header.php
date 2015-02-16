@@ -53,7 +53,7 @@
               </a>
             </li>
             <li>
-                <a href="/logout">
+                <a href="/member/logout">
                     <i class="foundicon-lock"></i>
                     &nbsp;
                     Salir

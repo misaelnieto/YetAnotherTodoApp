@@ -32,18 +32,18 @@ class Api extends REST_Controller
     public function task_put()
     {
         $this->load->model('Task');
-        $this->models->Task->add($this->put('parent_list_id'), $this->put('text'));
+        $this->Task->add($this->put('parent_list_id'), $this->put('text'));
     }
 
     public function task_post()
     {
         $this->load->model('Task');
-        $this->models->Task->update($this->post('id'), $this->post('text'));
+        $this->Task->update($this->post('id'), $this->post('text'));
     }
 
     public function task_delete()
     {
         $this->load->model('Task');
-        $this->models->Task->delete($this->delete('id'));
+        $this->Task->delete($this->delete('id'));
     }
 }
