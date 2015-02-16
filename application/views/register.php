@@ -77,7 +77,7 @@
                                         <span class="prefix"><i class="foundicon-lock"></i></span>
                                     </div>
                                     <div class="small-10 columns ">
-                                        <input type="password" name="password" placeholder="Contraseña">
+                                        <input type="password" placeholder="Contraseña">
                                     </div>
                                 </div>
                                 <input class="button" type="submit" value="Entrar">
