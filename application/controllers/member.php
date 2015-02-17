@@ -62,7 +62,11 @@ Class Member extends CI_Controller
                 $this->input->post('email'),
                 $this->input->post('password')
             );
-            
+            $sess_array = array(
+                'id' => $data->id,
+                'email' => $data->email
+            );
+            $this->session->set_userdata('logged_in', $sess_array);
             redirect('dashboard', 'refresh');
         }
     }

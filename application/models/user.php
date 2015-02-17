@@ -37,7 +37,7 @@ class User extends CI_Model
     public function add($name, $email, $password)
     {
         $data = array(
-            'name' => $name,
+            'full_name' => $name,
             'email' => $email,
             'password' => password_hash($password, PASSWORD_BCRYPT)
         );
