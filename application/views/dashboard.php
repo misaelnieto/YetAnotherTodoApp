@@ -1,5 +1,5 @@
 <!-- main content starts here -->
-<div class="rows">
+<div class="rows" ng-app="YetAnotherTodoApp">
     <div class="large-12 columns">
         <dl class="accordion" data-accordion>
           <dd class="accordion-navigation">

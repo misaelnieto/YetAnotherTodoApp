@@ -4,6 +4,7 @@
   "private": "true",
   "dependencies": {
     "foundation": "zurb/bower-foundation",
-    "foundation-icons": "git@github.com:zurb/foundation-icons.git"
+    "foundation-icons": "git@github.com:zurb/foundation-icons.git",
+    "angular": ""
   }
 }
