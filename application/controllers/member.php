@@ -2,7 +2,7 @@
 
 Class Member extends CI_Controller
 {
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
         $this->load->model('User', '', TRUE);
@@ -10,7 +10,7 @@ Class Member extends CI_Controller
         $this->load->helper('form');
     }
 
-    function login()
+    public function login()
     {
         $this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
@@ -38,7 +38,7 @@ Class Member extends CI_Controller
         redirect('dashboard', 'refresh');
     }
 
-    function logout()
+    public function logout()
     {
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('user_id');
@@ -47,7 +47,7 @@ Class Member extends CI_Controller
         redirect('login', 'refresh');
     }
 
-    function register()
+    public function register()
     {
         $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|is_unique[users.email]');
@@ -59,14 +59,14 @@ Class Member extends CI_Controller
         }
         else
         {
-            $result = $this->User->add(
+            $id = $this->User->add(
                 $this->input->post('name'),
                 $this->input->post('email'),
                 $this->input->post('password')
             );
             $sess_array = [
                'logged_in'=> TRUE,
-               'user_id' => $data->id
+               'user_id' => $id
             ];
             $this->session->set_userdata($sess_array);
             redirect('dashboard', 'refresh');

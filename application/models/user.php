@@ -54,6 +54,7 @@ class User extends CI_Model
             'password' => password_hash($password, PASSWORD_BCRYPT)
         );
         $this->db->insert('users', $data);
+        return $this->db->insert_id();
     }
 
     public function can_change_email($id, $email)
