@@ -53,34 +53,42 @@
         margin-top: 5%;
         max-width: 500px;
     }
-
-    .tabs-content {
-        border: 1px solid #EFEFEF;
-        -webkit-box-shadow: 1px 1px 2px 1px #EFEFEF;
-        box-shadow: 1px 1px 2px 1px #EFEFEF;
+    
+    .tab-title.active a {
+        background: $primary-color;
+        color: $white;
     }
 
-    .signup-panel {
+    .tabs-content {
+        border: 1px solid $primary-color;
+        -webkit-box-shadow: 0px 1px 1px 1px $primary-color;
+        box-shadow: 0px 1px 1px 1px $primary-color;
+    }
+
+    .signup-panel , .login-panel{
       padding: 15px;
     }
 
-    .signup-panel i {
+    .signup-panel i, .login-panel i{
       font-size: 30px;
       line-height: 50px;
       color: #999;
     }
 
-    .signup-panel form input, .signup-panel form span {
+    .signup-panel form input, .signup-panel form span,
+    .login-panel form input, .login-panel form span {
       height: 50px;
     }
 
-    .signup-panel .welcome {
+    .signup-panel .welcome,
+    .login-panel .welcome {
       font-size: 26px;
       text-align: center;
       margin-left: 0;
     }
 
-    .signup-panel .button {
+    .signup-panel .button,
+    .login-panel .button {
       margin-left: 35%;
     }
 
@@ -91,9 +99,4 @@
     p.title {
         border-bottom: 1px solid #cccccc !important;
     }
-
-    .content{
-        height: 450px;
-    }
-
 }

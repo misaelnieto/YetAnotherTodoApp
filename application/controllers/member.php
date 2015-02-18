@@ -7,6 +7,7 @@ Class Member extends CI_Controller
         parent::__construct();
         $this->load->model('User', '', TRUE);
         $this->load->library('form_validation');
+        $this->load->helper('form');
     }
 
     function login()
@@ -29,17 +30,18 @@ Class Member extends CI_Controller
             return;                    
         }
 
-        $sess_array = array(
-           'id' => $data->id,
-           'email' => $data->email
-        );
-        $this->session->set_userdata('logged_in', $sess_array);
+        $sess_array = [
+           'logged_in'=> TRUE,
+           'user_id' => $data->id
+        ];
+        $this->session->set_userdata($sess_array);
         redirect('dashboard', 'refresh');
     }
 
     function logout()
     {
         $this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata('user_id');
         session_start();
         session_destroy();
         redirect('login', 'refresh');
@@ -62,11 +64,11 @@ Class Member extends CI_Controller
                 $this->input->post('email'),
                 $this->input->post('password')
             );
-            $sess_array = array(
-                'id' => $data->id,
-                'email' => $data->email
-            );
-            $this->session->set_userdata('logged_in', $sess_array);
+            $sess_array = [
+               'logged_in'=> TRUE,
+               'user_id' => $data->id
+            ];
+            $this->session->set_userdata($sess_array);
             redirect('dashboard', 'refresh');
         }
     }

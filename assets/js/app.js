@@ -7,15 +7,15 @@ YetAnotherTodoApp.controller('PhoneListCtrl', function ($scope) {
         'tasks': [
             {
                 id: 1,
-                'text': 'Lorem ipsum'
-                'created': '',
-                'updated': ''
+                text: 'Lorem ipsum',
+                created: '',
+                updated: ''
             },
             {
                 id: 2,
-                'text': 'Lorem ipsum'
-                'created': '',
-                'updated': ''
+                text: 'Lorem ipsum',
+                created: '',
+                updated: ''
             },
         ]
     },

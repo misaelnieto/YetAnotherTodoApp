@@ -9,6 +9,12 @@ Class Register extends CI_Controller
     }
 
     public function index() {
+      if ($this->session->userdata('logged_in')) {
+          //Go to private area
+          redirect('dashboard', 'refresh');
+          return;
+      }
+
        //This method will have the credentials validation
        $this->load->library('form_validation');
      
@@ -18,8 +24,8 @@ Class Register extends CI_Controller
      
        if($this->form_validation->run() == FALSE)
        {
-            //Field validation failed.  User redirected to login page
-            $this->load->view('login');
+            //Field validation failed.  User redirected to register page
+            $this->load->view('register');
        }
        else
        {

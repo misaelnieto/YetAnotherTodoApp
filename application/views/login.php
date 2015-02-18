@@ -14,28 +14,22 @@
     </div>
     <div class="center row">
         <ul class="tabs" data-tab>
-            <li class="tab-title active">
-                <a href="#registro">Crear una cuenta</a>
-            </li>
             <li class="tab-title">
+                <a href="/register">Crear una cuenta</a>
+            </li>
+            <li class="tab-title active">
                 <a href="#ingresar">Ya tengo una</a>
             </li>
         </ul>
         <div class="tabs-content">
-            <section class="content active" id="registro">
+            <section class="content" id="registro">
+            </section>
+            <section class="content active" id="ingresar">
                 <div class="row">
                     <div class="large-12 columns">
-                        <div class="signup-panel">
-                            <?php echo form_open('member/register'); ?>
-                            <?php echo validation_errors(); ?>
-                                <div class="row collapse">
-                                    <div class="small-2  columns">
-                                        <span class="prefix"><i class="foundicon-people"></i></span>
-                                    </div>
-                                    <div class="small-10  columns">
-                                        <input type="text" name="name" placeholder="Nombre completo" required>
-                                    </div>
-                                </div>
+                        <div class="login-panel">
+                            <?php echo form_open('member/login'); ?>
+                            <p class="welcome"><?php echo validation_errors(); ?></p>
                                 <div class="row collapse">
                                     <div class="small-2 columns">
                                         <span class="prefix"><i class="foundicon-mail"></i></span>
@@ -50,34 +44,6 @@
                                     </div>
                                     <div class="small-10 columns ">
                                         <input type="password" name="password" placeholder="Contraseña" required>
-                                    </div>
-                                </div>
-                                <input class="button" type="submit" value="Haz tu cuenta">
-                            </form>
-                        </div>
-                    </div>
-                 </div>
-            </section>
-            <section class="content" id="ingresar">
-                <div class="row">
-                    <div class="large-12 columns">
-                        <div class="login-panel">
-                            <?php echo form_open('member/login'); ?>
-                            <p class="welcome"><?php echo validation_errors(); ?></p>
-                                <div class="row collapse">
-                                    <div class="small-2 columns">
-                                        <span class="prefix"><i class="foundicon-mail"></i></span>
-                                    </div>
-                                    <div class="small-10  columns">
-                                        <input type="email" name="email" placeholder="Correo Electrónico">
-                                    </div>
-                                </div>
-                                <div class="row collapse">
-                                    <div class="small-2 columns ">
-                                        <span class="prefix"><i class="foundicon-lock"></i></span>
-                                    </div>
-                                    <div class="small-10 columns ">
-                                        <input type="password" name="password" placeholder="Contraseña">
                                     </div>
                                 </div>
                                 <input class="button" type="submit" value="Entrar">

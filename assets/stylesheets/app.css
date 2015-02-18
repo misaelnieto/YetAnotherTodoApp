@@ -9173,44 +9173,48 @@ th.hide-for-touch {
   max-width: 500px;
 }
 /* line 57, ../scss/app.scss */
-.login .tabs-content {
-  border: 1px solid #EFEFEF;
-  -webkit-box-shadow: 1px 1px 2px 1px #EFEFEF;
-  box-shadow: 1px 1px 2px 1px #EFEFEF;
+.login .tab-title.active a {
+  background: #008CBA;
+  color: #FFFFFF;
 }
-/* line 63, ../scss/app.scss */
-.login .signup-panel {
+/* line 62, ../scss/app.scss */
+.login .tabs-content {
+  border: 1px solid #008CBA;
+  -webkit-box-shadow: 0px 1px 1px 1px #008CBA;
+  box-shadow: 0px 1px 1px 1px #008CBA;
+}
+/* line 68, ../scss/app.scss */
+.login .signup-panel, .login .login-panel {
   padding: 15px;
 }
-/* line 67, ../scss/app.scss */
-.login .signup-panel i {
+/* line 72, ../scss/app.scss */
+.login .signup-panel i, .login .login-panel i {
   font-size: 30px;
   line-height: 50px;
   color: #999;
 }
-/* line 73, ../scss/app.scss */
-.login .signup-panel form input, .login .signup-panel form span {
+/* line 78, ../scss/app.scss */
+.login .signup-panel form input, .login .signup-panel form span,
+.login .login-panel form input, .login .login-panel form span {
   height: 50px;
 }
-/* line 77, ../scss/app.scss */
-.login .signup-panel .welcome {
+/* line 83, ../scss/app.scss */
+.login .signup-panel .welcome,
+.login .login-panel .welcome {
   font-size: 26px;
   text-align: center;
   margin-left: 0;
 }
-/* line 83, ../scss/app.scss */
-.login .signup-panel .button {
+/* line 90, ../scss/app.scss */
+.login .signup-panel .button,
+.login .login-panel .button {
   margin-left: 35%;
 }
-/* line 87, ../scss/app.scss */
+/* line 95, ../scss/app.scss */
 .login section.active {
   padding-top: 75px !important;
 }
-/* line 91, ../scss/app.scss */
+/* line 99, ../scss/app.scss */
 .login p.title {
   border-bottom: 1px solid #cccccc !important;
-}
-/* line 95, ../scss/app.scss */
-.login .content {
-  height: 450px;
 }

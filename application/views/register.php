@@ -15,10 +15,10 @@
     <div class="center row">
         <ul class="tabs" data-tab>
             <li class="tab-title active">
-                <a href="#registro">Crear una cuenta</a>
+                <a href="#">Crear una cuenta</a>
             </li>
             <li class="tab-title">
-                <a href="#ingresar">Ya tengo una</a>
+                <a href="/login">Ya tengo una</a>
             </li>
         </ul>
         <div class="tabs-content">

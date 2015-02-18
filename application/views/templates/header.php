@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?php echo $title ?></title>
-    <link rel="stylesheet" href="../assets/bower_components/foundation-icons/foundation_icons_general/stylesheets/general_foundicons.css" />
-    <link rel="stylesheet" href="../assets/stylesheets/app.css" />
-    <script src="../assets/bower_components/modernizr/modernizr.js"></script>
+    <link rel="stylesheet" href="/assets/bower_components/foundation-icons/foundation_icons_general/stylesheets/general_foundicons.css" />
+    <link rel="stylesheet" href="/assets/stylesheets/app.css" />
+    <script src="/assets/bower_components/modernizr/modernizr.js"></script>
 </head>
 <body class="dashboard">
     <div class="off-canvas-wrap" data-offcanvas>
@@ -46,7 +46,7 @@
               </a>
             </li>
             <li>
-              <a href="/profile">
+              <a href="/profile/edit">
                 <i class="foundicon-heart"></i>
                 &nbsp;
                 Editar mi perfil
