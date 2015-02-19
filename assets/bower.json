@@ -5,6 +5,8 @@
   "dependencies": {
     "foundation": "zurb/bower-foundation",
     "foundation-icons": "git@github.com:zurb/foundation-icons.git",
-    "angular": ""
+    "angular": "",
+    "angular-foundation": "",
+    "underscore": ""
   }
 }

@@ -1,33 +1,48 @@
 <!-- main content starts here -->
-<div class="rows" ng-controller="TaskLists">
+<div class="rows" ng-controller="TaskListsCtrlr">
     <div class="large-12 columns">
         <dl class="accordion" data-accordion>
-          <dd class="accordion-navigation" ng-repeat="tsk_lst in task_lists">
-            <a href="#tasklist-{{tsk_lst.id}}">
-                {{ tsk_lst.title }}
+          <dd class="accordion-navigation" ng-repeat="lst in task_lists">
+            <a href="#tasklist-{{lst.id}}">
+                {{ lst.title }}
             </a>
-            <div id="tasklist-{{tsk_lst.id}}" class="content">
+            <div id="tasklist-{{lst.id}}" class="content">
                 <table>
                   <thead>
                     <tr>
                       <th width="800">
                         Tarea
                       </th>
-                      <th class="mark-button">Marcar como terminada</th>
+                      <th></th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr ng-repeat="tsk in tsk_lst.tasks">
+                    <tr ng-repeat="tsk in lst.tasks">
                       <td>
                         {{tsk.text}}
                       </td>
                       <td>
-                        <a href="#" class="button tiny" title="Marcar la tarea como terminada"><i class="foundicon-checkmark"></i></a>
+                        <a href="#" class="button tiny" title="Marcar la tarea como terminada"
+                           ng-click="task_completed(lst.id, tsk.id)">
+                          <i class="foundicon-checkmark">Terminada</i>
+                        </a>
+                      </td>
+                      <td>
+                        <a href="#" class="button tiny" title="Editar"
+                           ng-click="task_edit(lst.id, tsk.id)">
+                          <i class="foundicon-edit">Editar</i>
+                        </a>
                       </td>
                     </tr>
                   </tbody>
                 </table>
             </div>
+            <script type="text/ng-template" id="editModal.html">
+              <textarea ng-model="task.text">Hola</textarea>
+              <button class="button" ng-click="save_edit()">OK</button>
+              <a class="close-reveal-modal" ng-click="cancel_edit()">&#215;</a>
+            </script>
           </dd>
         </dl>
     </div>
