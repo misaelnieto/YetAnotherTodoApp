@@ -61,46 +61,57 @@ YetAnotherTodoApp.controller('TaskListsCtrlr', function ($scope, $modal) {
     ];
 
     $scope.task_completed = function (list_id, task_id) {
-        var l = _.find($scope.task_lists, function(tl) {
-            return tl.id == list_id;
-        };
-        var t = _.find(l.tasks, function (tsk){
-            return tsk.id == task_id;
-        });
-        l.splice(position, 1);
+        var tsklst_idx =0;
+        var tsk_idx =0;
+        var l = _.find($scope.task_lists, function(tl, index) {
+                tsklst_idx = index;
+                return tl.id == list_id;
+            });
+        var t = _.find(l.tasks, function (tsk, index){
+                tsk_idx = index;
+                return tsk.id == task_id;
+            });
+        $scope.task_lists[tsklst_idx].tasks.splice(tsk_idx, 1);
     };
 
     $scope.task_edit = function (list_id, task_id) {
-        var l = $scope.task_lists[list_id].tasks;
-        var t = l.find(function(x) {
-            return x.id == task_id;
-        });
-        var old_text = l.text;
+        var tsklst_idx =0;
+        var tsk_idx =0;
+        var l = _.find($scope.task_lists, function(tl, index) {
+                tsklst_idx = index;
+                return tl.id == list_id;
+            });
+        var t = _.find(l.tasks, function (tsk, index){
+                tsk_idx = index;
+                return tsk.id == task_id;
+            });
+        var old_text = t.text;
         var modalInstance = $modal.open({
-          templateUrl: 'editModal.html',
-          controller: 'EditModalCtrlr',
-          resolve: {
-            text: function () {
-              return l.text;
+            templateUrl: 'editModal.html',
+            controller: 'EditModalCtrlr',
+            resolve: {
+                task: function () {
+                    return t;
+                }
             }
-          }
         });
         modalInstance.result.then(function () {
             console.log('Save text using API');
         }, function () {
-            l.text = old_text;
+            console.log('Restaura');
+            t.text = old_text;
         });
     };
 });
 
-YetAnotherTodoApp.controller('EditModalCtrlr', function ($scope, $modalInstance, text) {
+YetAnotherTodoApp.controller('EditModalCtrlr', function ($scope, $modalInstance, task) {
     'use strict';
-    $scope.text = text;
+    $scope.task = task;
 
-    $scope.save = function () {
+    $scope.save_edit = function () {
         $modalInstance.close($scope.text);
     }
-    $scope.cancel = function () {
+    $scope.cancel_edit = function () {
         $modalInstance.dismiss('cancel');
     }
 });
