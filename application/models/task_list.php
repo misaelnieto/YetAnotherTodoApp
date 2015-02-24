@@ -4,6 +4,8 @@ class Task_List extends CI_Model {
 
     public function __construct()
     {
+        // Call the Model constructor
+        parent::__construct();
         $this->load->database();
     }
 
@@ -15,6 +17,19 @@ class Task_List extends CI_Model {
     public function all()
     {
         $this->load->model('Task');
+        $query = $this->db->query('SELECT id, title FROM task_lists');
+        $result = $query->result_array();
+        foreach ($result as &$row)
+        {
+            $row["tasks"] = $this->Task->all_from_list($row['id']);
+        }
+        return $result;
+    }
+
+    public function all_from_user($user_id)
+    {
+        $this->load->model('Task');
+        $this->db->where('user_id', $user_id);
         $query = $this->db->query('SELECT id, title FROM task_lists');
         $result = $query->result_array();
         foreach ($result as &$row)

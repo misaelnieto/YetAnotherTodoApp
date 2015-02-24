@@ -16,6 +16,11 @@ class Task extends CI_Model {
         $this->load->database();
     }
 
+    public function get ($id) {
+        $q = $this->db->get_where('tasks', array('id' => $id), 1);
+        return $q->row();
+    }
+
     public function all_from_list($tasklist_id)
     {
         $query = $this->db->query('SELECT id, text FROM tasks WHERE completed=0 AND task_list_id='.$tasklist_id);

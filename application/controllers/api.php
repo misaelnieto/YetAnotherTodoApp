@@ -20,9 +20,12 @@ class Api extends REST_Controller
 
     public function lists_get()
     {
-        $this->load->model('Task_List');
-        $data = array('status'=>'OK', 'data'=> $this->Task_List->all());
-        $this->response($data, 200);
+        if ($this->session->userdata('logged_in')) {
+            $this->load->model('Task_List');
+            $data = array('status'=>'OK', 'data'=> $this->Task_List->all_from_user($this->session->userdata('user_id')));
+            $this->response($data, 200);
+        }
+        $this->response(400);
     }
 
     public function lists_put()
@@ -38,7 +41,6 @@ class Api extends REST_Controller
             $this->response($data, 200);
         }
         $this->response(400);
-
     }
 
     public function lists_post()
@@ -49,8 +51,14 @@ class Api extends REST_Controller
 
     public function task_put()
     {
-        $this->load->model('Task');
-        $this->Task->add($this->put('parent_list_id'), $this->put('text'));
+        if ($this->session->userdata('logged_in')) {
+            $this->load->model('Task');
+            $this->Task->add(intval($this->put('task_list_id')), $this->put('text'));
+            $nw_id = $this->db->insert_id();
+            $data = array('status'=>'OK', 'data'=> $this->Task->get($nw_id));
+            $this->response($data, 200);
+        }
+        $this->response(400);
     }
 
     public function task_post()
@@ -61,7 +69,18 @@ class Api extends REST_Controller
 
     public function task_delete()
     {
-        $this->load->model('Task');
-        $this->Task->delete($this->delete('id'));
+        if ($this->session->userdata('logged_in')) {
+            $this->load->model('Task_List');
+            $this->load->model('Task');
+            $task = $this->Task->get($this->delete('id'));
+            $list = $this->Task_List->get($task->task_list_id);
+            if ($list->user_id == $this->session->userdata('user_id')) {
+                $this->Task->delete($this->delete('id'));
+                $this->response($data, 200);
+            } else {
+                $this->response(400);
+            }
+        }
+        $this->response(400);
     }
 }

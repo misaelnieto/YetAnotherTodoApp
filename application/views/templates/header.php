@@ -68,7 +68,7 @@
           <script type="text/ng-template" id="NewTaskModal.html">
               <a class="close-reveal-modal" ng-click="cancel()">&#215;</a>
               <p>Lista de tareas</p>
-              <select ng-model="data.tasklist_id" ng-options="l.id as l.title for l in task_lists"></select>
+              <select ng-model="data.task_list_id" ng-options="l.id as l.title for l in task_lists"></select>
               <p>Texto</p>
               <textarea ng-model="data.text" required/>
               <button class="button" ng-click="add_task()">Agregar tarea</button>

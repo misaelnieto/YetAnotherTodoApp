@@ -1,64 +1,12 @@
 var YetAnotherTodoApp = angular.module('YetAnotherTodoApp', ['mm.foundation']);
 
-YetAnotherTodoApp.controller('TaskListsCtrlr', function ($scope, $modal, $rootScope) {
+YetAnotherTodoApp.controller('TaskListsCtrlr', function ($scope, $modal, $rootScope, $http) {
     'use strict';
-    $rootScope.task_lists = [
-    {
+    $rootScope.task_lists = [];
 
-        'id':0,
-        'title': 'Default',
-        'tasks': [
-            {
-                id: 1,
-                text: 'Lorem ipsum 1',
-                created: '',
-                updated: ''
-            },
-            {
-                id: 2,
-                text: 'Lorem ipsum 2',
-                created: '',
-                updated: ''
-            },
-        ]
-    },
-    {
-        'id':1,
-        'title': 'Tareas de casa',
-        'tasks': [
-            {
-                id: 3,
-                text: ' This is longer content Donec id elit non mi porta gravida at eget metus. ',
-                created: '',
-                updated: ''
-            },
-            {
-                id: 4,
-                text: 'Panda german iron man top bear star wars no bad ',
-                created: '',
-                updated: ''
-            },
-        ]
-    },
-    {
-        'id':2,
-        'title': 'Tareas del trabajo',
-        'tasks': [
-            {
-                id: 5,
-                text: 'Crear API REST',
-                created: '',
-                updated: ''
-            },
-            {
-                id: 6,
-                text: 'Instalar servidor de bases de datos.',
-                created: '',
-                updated: ''
-            },
-        ]
-    }
-    ];
+    $http.get('/api/lists').success(function (response) {
+        $rootScope.task_lists = response.data;
+    });
 
     $scope.task_completed = function (list_id, task_id) {
         var tsklst_idx =0;
@@ -157,12 +105,17 @@ YetAnotherTodoApp.controller('NewTaskListModalCtrlr', function ($scope, $modalIn
     }
 });
 
-YetAnotherTodoApp.controller('NewTaskModalCtrlr', function ($scope, $modalInstance, $rootScope) {
+YetAnotherTodoApp.controller('NewTaskModalCtrlr', function ($scope, $modalInstance, $http, $rootScope) {
     $scope.task_lists = $rootScope.task_lists;
-    $scope.data = {tasklist_id: null, text : ''};
+    $scope.data = {task_list_id: null, text : ''};
     $scope.add_task = function () {
-        console.log($scope.data);
-        $modalInstance.close($scope.data);
+        $scope.data.task_list_id = parseInt($scope.data.task_list_id);
+        $http.put('/api/task', $scope.data).success(function (response) {
+            var t = _.find($rootScope.task_lists, function(t) { return t.id == response.data.task_list_id});
+            t.tasks.push(response.data);
+            t.tasks = t.tasks.sort(function (a, b) { return a.id - b.id; });
+        });
+        $modalInstance.close();
     };
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
