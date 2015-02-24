@@ -5,7 +5,7 @@ class Task extends CI_Model {
     var $id ='';
     var $text ='';
     var $completed ='';
-    var $parent_list ='';
+    var $task_list_id ='';
     var $created ='';
     var $updated ='';
 
@@ -18,14 +18,14 @@ class Task extends CI_Model {
 
     public function all_from_list($tasklist_id)
     {
-        $query = $this->db->query('SELECT id, text FROM tasks WHERE completed=0 AND parent_list='.$tasklist_id);
+        $query = $this->db->query('SELECT id, text FROM tasks WHERE completed=0 AND task_list_id='.$tasklist_id);
         return $query->result_array();
     }
 
-    public function add($parent_list_id, $text) {
+    public function add($task_list_id, $text) {
         $data = array(
            'text' => $text,
-           'parent_list' => $parent_list_id
+           'task_list_id' => $task_list_id
         );
         $this->db->insert('tasks', $data);
     }

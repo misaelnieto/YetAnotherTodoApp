@@ -8,6 +8,8 @@ class Api extends REST_Controller
     {
         parent::__construct();
         $this->load->model('user','',TRUE);
+        $this->load->model('Task_List');
+        $this->load->model('Task');
     }
 
     public function test_get()
@@ -23,13 +25,23 @@ class Api extends REST_Controller
         $this->response($data, 200);
     }
 
-    public function list_put()
+    public function lists_put()
     {
-        $this->load->model('Task_List');
-        $this->Task_List->add($this->put('title'));
+        if ($this->session->userdata('logged_in')) {
+            $this->load->model('Task_List');
+            $this->Task_List->add(
+                $this->put('title'),
+                $this->session->userdata('user_id')
+            );
+            $nw_id = $this->db->insert_id();
+            $data = array('status'=>'OK', 'data'=> $this->Task_List->get($nw_id));
+            $this->response($data, 200);
+        }
+        $this->response(400);
+
     }
 
-    public function list_post()
+    public function lists_post()
     {
         $this->load->model('Task_List');
         $this->Task_List->update($this->post('title'), $this->post('title'));

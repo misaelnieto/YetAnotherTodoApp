@@ -7,6 +7,11 @@ class Task_List extends CI_Model {
         $this->load->database();
     }
 
+    public function get ($id) {
+        $q = $this->db->get_where('task_lists', array('id' => $id), 1);
+        return $q->row();
+    }
+
     public function all()
     {
         $this->load->model('Task');
@@ -19,12 +24,13 @@ class Task_List extends CI_Model {
         return $result;
     }
 
-    public function add($title)
+    public function add($title, $user_id)
     {
         $data = array(
-           'title' => $title
+           'title' => $title,
+           'user_id' => $user_id
         );
-        $this->db->insert('tasks_lists', $data);
+        $this->db->insert('task_lists', $data);
     }
 
     public function update($id, $title)

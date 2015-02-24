@@ -1,10 +1,5 @@
 var YetAnotherTodoApp = angular.module('YetAnotherTodoApp', ['mm.foundation']);
 
-YetAnotherTodoApp.factory('TodoAPI', ['$resource', 
-    function ($resource) {
-        return $resource ('api/');
-}]);
-
 YetAnotherTodoApp.controller('TaskListsCtrlr', function ($scope, $modal, $rootScope) {
     'use strict';
     $rootScope.task_lists = [
@@ -128,9 +123,9 @@ YetAnotherTodoApp.controller('OffCanvasMenuCtrlr', function ($scope, $modal) {
             controller: 'NewTaskListModalCtrlr'
         });
 
-        modalInstance.result.then(function(title) {
-            console.log('nueva lista de tareas con titulo: ', title);
-        }, function() {});
+        // modalInstance.result.then(function(title) {
+        //     console.log('nueva lista de tareas con titulo: ', title);
+        // }, function() {});
     };
 
     $scope.showNewTaskModal = function () {
@@ -145,11 +140,17 @@ YetAnotherTodoApp.controller('OffCanvasMenuCtrlr', function ($scope, $modal) {
     };
 });
 
-YetAnotherTodoApp.controller('NewTaskListModalCtrlr', function ($scope, $modalInstance) {
+YetAnotherTodoApp.controller('NewTaskListModalCtrlr', function ($scope, $modalInstance, $http, $rootScope) {
     $scope.data = {'title' : ''};
     $scope.add_tasklist = function () {
-        console.log($scope.data);
-        $modalInstance.close($scope.data.title);
+        $http.put('/api/lists/', $scope.data).success(function (response) {
+            $rootScope.task_lists.push(response.data);
+            $rootScope.task_lists = $rootScope.task_lists.sort(function (a, b) {
+                return a.id - b.id
+            }); 
+        });
+
+        $modalInstance.close();
     }
     $scope.cancel_add = function () {
         $modalInstance.dismiss('cancel');
