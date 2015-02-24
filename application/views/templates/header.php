@@ -20,7 +20,7 @@
             </section>
         </div>
         <!-- Off Canvas Menu -->
-        <aside class="left-off-canvas-menu">
+        <aside class="left-off-canvas-menu" ng-controller="OffCanvasMenuCtrlr">
           <!-- whatever you want goes here -->
           <ul class="off-canvas-list">
             <li><label for="">Opciones</label></li>
@@ -32,14 +32,14 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="#" ng-click="createTaskList()">
                 <i class="foundicon-paper-clip"></i>
                 &nbsp;
                 Crear una lista de tareas
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="#" ng-click="showNewTaskModal()">
                 <i class="foundicon-add-doc"></i>
                 &nbsp;
                 Crear una tarea
@@ -60,4 +60,17 @@
                 </a>
             </li>
           </ul>
+          <script type="text/ng-template" id="NewTaskListModal.html">
+              <a class="close-reveal-modal" ng-click="cancel_add()">&#215;</a>
+              <input type="text" ng-model="data.title" required/>
+              <button class="button" ng-click="add_tasklist()">Agregar lista de tareas</button>
+          </script>
+          <script type="text/ng-template" id="NewTaskModal.html">
+              <a class="close-reveal-modal" ng-click="cancel()">&#215;</a>
+              <p>Lista de tareas</p>
+              <select ng-model="data.tasklist_id" ng-options="l.id as l.title for l in task_lists"></select>
+              <p>Texto</p>
+              <textarea ng-model="data.text" required/>
+              <button class="button" ng-click="add_task()">Agregar tarea</button>
+          </script>
         </aside>

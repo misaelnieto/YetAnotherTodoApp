@@ -37,7 +37,7 @@
         </accordion>
     </div>
 </div>
-<script type="text/ng-template" id="editModal.html">
+<script type="text/ng-template" id="TaskEditModal.html">
     <a class="close-reveal-modal" ng-click="cancel_edit()">&#215;</a>
     <textarea ng-model="task.text">Hola</textarea>
     <button class="button" ng-click="save_edit()">OK</button>

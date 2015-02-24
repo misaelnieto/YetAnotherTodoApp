@@ -1,8 +1,13 @@
 var YetAnotherTodoApp = angular.module('YetAnotherTodoApp', ['mm.foundation']);
 
-YetAnotherTodoApp.controller('TaskListsCtrlr', function ($scope, $modal) {
+YetAnotherTodoApp.factory('TodoAPI', ['$resource', 
+    function ($resource) {
+        return $resource ('api/');
+}]);
+
+YetAnotherTodoApp.controller('TaskListsCtrlr', function ($scope, $modal, $rootScope) {
     'use strict';
-    $scope.task_lists = [
+    $rootScope.task_lists = [
     {
 
         'id':0,
@@ -87,8 +92,8 @@ YetAnotherTodoApp.controller('TaskListsCtrlr', function ($scope, $modal) {
             });
         var old_text = t.text;
         var modalInstance = $modal.open({
-            templateUrl: 'editModal.html',
-            controller: 'EditModalCtrlr',
+            templateUrl: 'TaskEditModal.html',
+            controller: 'EditTaskModalCtrlr',
             resolve: {
                 task: function () {
                     return t;
@@ -104,7 +109,7 @@ YetAnotherTodoApp.controller('TaskListsCtrlr', function ($scope, $modal) {
     };
 });
 
-YetAnotherTodoApp.controller('EditModalCtrlr', function ($scope, $modalInstance, task) {
+YetAnotherTodoApp.controller('EditTaskModalCtrlr', function ($scope, $modalInstance, task) {
     'use strict';
     $scope.task = task;
 
@@ -114,4 +119,51 @@ YetAnotherTodoApp.controller('EditModalCtrlr', function ($scope, $modalInstance,
     $scope.cancel_edit = function () {
         $modalInstance.dismiss('cancel');
     }
+});
+
+YetAnotherTodoApp.controller('OffCanvasMenuCtrlr', function ($scope, $modal) {
+    $scope.createTaskList = function () {
+        var modalInstance = $modal.open({
+            templateUrl: 'NewTaskListModal.html',
+            controller: 'NewTaskListModalCtrlr'
+        });
+
+        modalInstance.result.then(function(title) {
+            console.log('nueva lista de tareas con titulo: ', title);
+        }, function() {});
+    };
+
+    $scope.showNewTaskModal = function () {
+        var modalInstance = $modal.open({
+            templateUrl: 'NewTaskModal.html',
+            controller: 'NewTaskModalCtrlr'
+        });
+
+        modalInstance.result.then(function(task) {
+            console.log('nueva tarea: ', task);
+        }, function() {});
+    };
+});
+
+YetAnotherTodoApp.controller('NewTaskListModalCtrlr', function ($scope, $modalInstance) {
+    $scope.data = {'title' : ''};
+    $scope.add_tasklist = function () {
+        console.log($scope.data);
+        $modalInstance.close($scope.data.title);
+    }
+    $scope.cancel_add = function () {
+        $modalInstance.dismiss('cancel');
+    }
+});
+
+YetAnotherTodoApp.controller('NewTaskModalCtrlr', function ($scope, $modalInstance, $rootScope) {
+    $scope.task_lists = $rootScope.task_lists;
+    $scope.data = {tasklist_id: null, text : ''};
+    $scope.add_task = function () {
+        console.log($scope.data);
+        $modalInstance.close($scope.data);
+    };
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
 });

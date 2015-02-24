@@ -10,8 +10,5 @@
     <script src="/assets/bower_components/angular/angular.js"></script>
     <script src="/assets/bower_components/angular-foundation/mm-foundation-tpls.js"></script>
     <script src="/assets/js/app.js"></script>
-    <script type="text/javascript">
-        /*$(document).foundation();*/
-    </script>
 </body>
 </html>

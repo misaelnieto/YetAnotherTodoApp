@@ -4,6 +4,12 @@ require APPPATH.'/libraries/REST_Controller.php';
 
 class Api extends REST_Controller
 {
+    public function __constructor()
+    {
+        parent::__construct();
+        $this->load->model('user','',TRUE);
+    }
+
     public function test_get()
     {
         $data = array('hola', 'mundo');
