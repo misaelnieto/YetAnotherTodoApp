@@ -9218,3 +9218,8 @@ th.hide-for-touch {
 .login p.title {
   border-bottom: 1px solid #cccccc !important;
 }
+
+/* line 105, ../scss/app.scss */
+.dashboard aside.left-off-canvas-menu {
+  min-height: 300px;
+}
