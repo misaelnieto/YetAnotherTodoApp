@@ -63,8 +63,22 @@ class Api extends REST_Controller
 
     public function task_post()
     {
-        $this->load->model('Task');
-        $this->Task->update($this->post('id'), $this->post('text'));
+        if ($this->session->userdata('logged_in')) {
+            $this->load->model('Task_List');
+            $this->load->model('Task');
+            $task = $this->Task->get($this->post('id'));
+            $list = $this->Task_List->get($task->task_list_id);
+
+            if ($list->user_id == $this->session->userdata('user_id')) {
+                $this->Task->update($this->post('id'), $this->post('text'), $this->post('completed'));
+                $data = array('status'=>'OK', 'data'=> $this->Task->get($this->post('id')));
+                $this->response($data, 200);
+            } else {
+                $this->response(400);
+            }
+
+        }
+        $this->response(400);
     }
 
     public function task_delete()

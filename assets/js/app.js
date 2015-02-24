@@ -20,6 +20,9 @@ YetAnotherTodoApp.controller('TaskListsCtrlr', function ($scope, $modal, $rootSc
                 return tsk.id == task_id;
             });
         $scope.task_lists[tsklst_idx].tasks.splice(tsk_idx, 1);
+
+        t.completed = 1;
+        $http.post('/api/task', t)
     };
 
     $scope.task_edit = function (list_id, task_id) {
@@ -52,12 +55,16 @@ YetAnotherTodoApp.controller('TaskListsCtrlr', function ($scope, $modal, $rootSc
     };
 });
 
-YetAnotherTodoApp.controller('EditTaskModalCtrlr', function ($scope, $modalInstance, task) {
+YetAnotherTodoApp.controller('EditTaskModalCtrlr', function ($scope, $modalInstance, task, $http) {
     'use strict';
     $scope.task = task;
 
     $scope.save_edit = function () {
+        $http.post('/api/task', $scope.task).success(function (response) {
+
+        });
         $modalInstance.close($scope.text);
+
     }
     $scope.cancel_edit = function () {
         $modalInstance.dismiss('cancel');

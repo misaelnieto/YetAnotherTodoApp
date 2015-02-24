@@ -35,10 +35,11 @@ class Task extends CI_Model {
         $this->db->insert('tasks', $data);
     }
 
-    public function update($id, $text)
+    public function update($id, $text, $completed)
     {
         $data = array(
-           'text' => $text
+           'text' => $text,
+           'completed' => $completed
         );
         $this->db->where('id', $id);
         $this->db->update('tasks', $data);
