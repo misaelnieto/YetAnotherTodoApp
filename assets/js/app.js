@@ -119,6 +119,9 @@ YetAnotherTodoApp.controller('NewTaskModalCtrlr', function ($scope, $modalInstan
         $scope.data.task_list_id = parseInt($scope.data.task_list_id);
         $http.put('/api/task', $scope.data).success(function (response) {
             var t = _.find($rootScope.task_lists, function(t) { return t.id == response.data.task_list_id});
+            if (_.isUndefined(t.tasks)){
+                t.tasks = new Array();
+            }
             t.tasks.push(response.data);
             t.tasks = t.tasks.sort(function (a, b) { return a.id - b.id; });
         });
